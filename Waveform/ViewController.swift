@@ -23,19 +23,29 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         osc = AKOscillator(waveform: wave, frequency: oscFreq)
-        osc?.start()
         filter = AKLowPassFilter(osc!, cutoffFrequency: filterFreq)
         filter?.start()
         mixer = AKMixer(filter!)
         mixer?.start()
         
+        WaveformImage.addSubview(AKOutputWaveformPlot.createView())
+        
         AudioKit.output = mixer
         AudioKit.start()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    @IBAction func PlaySwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            osc?.play()
+        } else {
+            osc?.stop()
+        }
+    }
 
     //MARK: Waveform Image
     @IBOutlet weak var WaveformImage: UIView!
+    
     
     //MARK: Sliders
     @IBAction func OscFreqSlider(_ sender: UISlider) {
@@ -43,7 +53,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func FilterFreqSlider(_ sender: UISlider) {
-        filter?.cutoffFrequency = pow(10, Double(sender.value))
+        filterFreq = Double(sender.value)
     }
     
     override func didReceiveMemoryWarning() {
