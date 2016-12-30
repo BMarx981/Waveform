@@ -11,6 +11,7 @@ import AudioKit
 
 class ViewController: UIViewController {
 
+    //MARK: Properties
     var osc: AKOscillator?
     let wave = AKTable(.sawtooth, count: 4096)
     var filter: AKLowPassFilter?
@@ -22,7 +23,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         osc = AKOscillator(waveform: wave, frequency: oscFreq)
+        osc?.start()
         filter = AKLowPassFilter(osc!, cutoffFrequency: filterFreq)
+        filter?.start()
         mixer = AKMixer(filter!)
         mixer?.start()
         
@@ -31,11 +34,18 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    //MARK: Waveform Image
+    @IBOutlet weak var WaveformImage: UIView!
+    
+    //MARK: Sliders
     @IBAction func OscFreqSlider(_ sender: UISlider) {
+        osc?.frequency = pow(10, Double(sender.value))
     }
     
     @IBAction func FilterFreqSlider(_ sender: UISlider) {
+        filter?.cutoffFrequency = pow(10, Double(sender.value))
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

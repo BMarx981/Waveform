@@ -84,6 +84,9 @@
                             <constraint firstItem="3e7-4R-a67" firstAttribute="centerX" secondItem="gkv-ZY-FB9" secondAttribute="centerX" id="od3-Rs-eb8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="WaveformImage" destination="3e7-4R-a67" id="grf-Jm-r62"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
