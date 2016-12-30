@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Waveform" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,73 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3e7-4R-a67">
+                                <rect key="frame" x="67" y="268" width="240" height="131"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waveform Synth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aU1-Bj-A6P">
+                                <rect key="frame" x="124.5" y="28" width="126.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="gkv-ZY-FB9" userLabel="Osc Stack">
+                                <rect key="frame" x="66" y="128.5" width="243" height="59.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Osc Freq" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4g-p4-olE">
+                                        <rect key="frame" x="0.0" y="0.0" width="243" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.7799999999999998" minValue="1.3" maxValue="4.2999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="lVZ-To-27Y">
+                                        <rect key="frame" x="-2" y="29.5" width="247" height="31"/>
+                                        <connections>
+                                            <action selector="OscFreqSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="YuS-Go-df7"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b7o-3X-Cma" userLabel="Filter Stack">
+                                <rect key="frame" x="30.5" y="439" width="314" height="58.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Freq" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EaO-DB-VXc">
+                                        <rect key="frame" x="118.5" y="0.0" width="77" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eve-Ru-tUn">
+                                        <rect key="frame" x="-2" y="28.5" width="318" height="31"/>
+                                        <connections>
+                                            <action selector="FilterFreqSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="r5S-Dt-arO"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aU1-Bj-A6P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="14N-Hs-SZE"/>
+                            <constraint firstItem="3e7-4R-a67" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7MX-XG-m6R"/>
+                            <constraint firstItem="gkv-ZY-FB9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9pv-yI-zSl"/>
+                            <constraint firstItem="gkv-ZY-FB9" firstAttribute="top" secondItem="aU1-Bj-A6P" secondAttribute="bottom" constant="80" id="Kxf-21-EX3"/>
+                            <constraint firstItem="b7o-3X-Cma" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LZw-Da-tGc"/>
+                            <constraint firstItem="3e7-4R-a67" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="VKn-Ui-gGc"/>
+                            <constraint firstItem="gkv-ZY-FB9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="afB-1a-ea8"/>
+                            <constraint firstItem="aU1-Bj-A6P" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="bqt-kG-sIO"/>
+                            <constraint firstItem="gkv-ZY-FB9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="cOX-GQ-hAQ"/>
+                            <constraint firstItem="b7o-3X-Cma" firstAttribute="top" secondItem="3e7-4R-a67" secondAttribute="bottom" constant="40" id="jwF-q7-cdm"/>
+                            <constraint firstItem="3e7-4R-a67" firstAttribute="top" secondItem="gkv-ZY-FB9" secondAttribute="bottom" constant="80" id="nAi-t7-wJT"/>
+                            <constraint firstItem="b7o-3X-Cma" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nbd-li-vtI"/>
+                            <constraint firstItem="3e7-4R-a67" firstAttribute="centerX" secondItem="gkv-ZY-FB9" secondAttribute="centerX" id="od3-Rs-eb8"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>
